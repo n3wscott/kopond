@@ -1,0 +1,19 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: echo-controller
+  namespace: kopond
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: echo-controller
+    spec:
+      serviceAccountName: echo-controller
+      containers:
+      - name: echo-controller
+        image: github.com/n3wscott/kopond/cmd/echo
+        args:
+        - "-logtostderr=true"
+        - "-stderrthreshold=INFO"
