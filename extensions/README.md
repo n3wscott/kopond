@@ -33,7 +33,6 @@ And now I am done with it.
 ```
 ⦿ ko service delete echo
 service.serving.knative.dev "echo" deleted
-[11:28:18] nicholss@nicholss-1 ~/go/src/github.com/google/go-containerregistry (move-cmd)
 ```
 
 It is gone from k8s:
