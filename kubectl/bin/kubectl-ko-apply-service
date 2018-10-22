@@ -1,0 +1,25 @@
+#! /bin/bash
+
+NAME=$1
+IMAGE_PATH=$2
+
+SERVICE="
+apiVersion: serving.knative.dev/v1alpha1
+kind: Service
+metadata:
+  name: ${NAME}
+  namespace: default
+spec:
+  runLatest:
+    configuration:
+      revisionTemplate:
+        spec:
+          container:
+            image: ${IMAGE_PATH}
+"
+
+TMP=`mktemp`
+
+echo "$SERVICE" > $TMP
+
+ko apply -f $TMP
